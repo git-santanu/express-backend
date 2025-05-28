@@ -7,6 +7,8 @@ app.use(express.json())
 
 const authRoutes = require('./routes/auth-route')
 app.use('/api', authRoutes)
+const protectedRoutes = require('./routes/protected-route')
+app.use('/api', protectedRoutes)
 
 app.listen(PORT, () => {
     try {
