@@ -16,7 +16,7 @@
   "main": "test-connection.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && node test-connection.js && exit 1",
-    "dev": "node app.js && nodemone ."
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "Santanu Dutta",

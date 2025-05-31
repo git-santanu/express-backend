@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-app.use(express.json());
 const PORT = process.env.PORT || 8001
 require('dotenv').config()
 app.use(express.json())

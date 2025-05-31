@@ -1,4 +1,7 @@
 const User = require("../../models/users");
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key_here'
 
 const UserSignUp = async (req, res) => {
   try {
@@ -15,7 +18,12 @@ const UserSignUp = async (req, res) => {
       return res.status(401).json({ error: "User already exist!" });
     }
     const user = await User.create({ name, email, password: hashedPassword });
-    res.json({ message: "User registered", user });
+    const response = {
+      id: user.id,
+      name: user.name,
+      email: user.email
+    }
+    res.json({ message: "User registered", response });
   } catch (error) {
     console.log("something went wrong", error);
   }
