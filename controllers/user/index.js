@@ -20,6 +20,7 @@ const GetUserDetails = async (req, res) => {
   }
 };
 
+
 module.exports = {
   GetUserDetails,
 };
