@@ -23,7 +23,6 @@ const GetUserDetails = async (req, res) => {
 
 const UploadFiles = async(req, res) => {
   try {
-    console.log(req)
     const files = req.files;
     if (files.length === 0 || !files) {
       return res.status(403).json({error: "No files selected" });
