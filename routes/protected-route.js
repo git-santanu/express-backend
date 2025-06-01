@@ -7,4 +7,6 @@ const Router = express.Router();
 // dashboard
 Router.get("/dashboard", AuthenicateToken, UserController.GetUserDetails);
 Router.post("/upload", AuthenicateToken, upload.array('images', 10), UserController.UploadFiles);
+Router.get("/user-files-fetch", AuthenicateToken, UserController.getUserFiles);
+
 module.exports = Router;

@@ -41,7 +41,36 @@ const UploadFiles = async(req, res) => {
   }
 }
 
+const getUserFiles = async(req, res) => {
+  try {
+    const checkUserDataExist = await UserImages.findOne({
+      where: {
+        user_id: req.user.id,
+        deletedAt: null
+      },
+      attributes:{exclude: ["createdAt", "deletedAt", "updatedAt"]},
+      raw: true
+    })
+    if (!checkUserDataExist) return res.status(401).json({message: 'Record not found!'})
+      const response = await User.findOne({
+        where: {
+          id: req.user.id
+        },
+        attributes: ['id', 'name'],
+        include: [{
+          model: UserImages,
+          attributes: {exclude:['updatedAt', 'deletedAt']}
+        }]
+      })
+      return res.status(200).json({message: 'Files fetched successfully', response})
+  } catch (error) {
+    console.log('something went wrong')
+    res.status
+  }
+}
+
 module.exports = {
   GetUserDetails,
-  UploadFiles
+  UploadFiles,
+  getUserFiles
 };
