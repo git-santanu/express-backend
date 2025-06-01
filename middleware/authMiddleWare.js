@@ -8,6 +8,7 @@ const AuthenicateToken = (req, res, next) => {
     if (!token) return res.status(403).json({ error: "token required" });
     jwt.verify(token, JWT_SECRET, (err, user) => {
       if (err) return res.status(403).json({ error: "invalid token" });
+      console.log("Decoded token:", user)
       req.user = user;
       next();
     });
