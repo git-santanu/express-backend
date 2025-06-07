@@ -5,7 +5,7 @@ const TestConnection = async() => {
         await sequelize.authenticate()
         console.log('connection succesfull')
     } catch (error) {
-        console.log('unable to connect')
+        console.log('unable to connect', error)
     }
 }
 TestConnection()
